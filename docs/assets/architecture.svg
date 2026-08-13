@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-labelledby="archTitle archDesc">
+  <title id="archTitle">alepe package architecture</title>
+  <desc id="archDesc">Three layers: an endpoint layer of exported functions grouped by subject, a shared core layer handling requests, parsing and caching, and the outside world consisting of the ALEPE API and the on-disk response cache.</desc>
+
+  <defs>
+    <marker id="aDown" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .bg   { fill: #ffffff; }
+      .band { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1.5; }
+      .ep   { fill: #e5edf9; stroke: #1f5aa8; stroke-width: 1.5; }
+      .core { fill: #eef2f7; stroke: #475569; stroke-width: 1.5; }
+      .out  { fill: #1f5aa8; stroke: #173f75; stroke-width: 1.5; }
+      .disk { fill: #f1f5f9; stroke: #94a3b8; stroke-width: 1.5; stroke-dasharray: 5 3; }
+      .t    { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; fill: #0f172a; }
+      .h    { font-size: 15px; font-weight: 600; }
+      .band-lbl { font-size: 11.5px; font-weight: 600; fill: #64748b; letter-spacing: 0.8px; }
+      .f    { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12.5px; font-weight: 600; }
+      .fn   { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 11px; fill: #334155; }
+      .s    { font-size: 11.5px; fill: #475569; }
+      .w    { fill: #ffffff; }
+      /* defined last so it wins over .s for text sitting on the blue */
+      .od   { fill: #dbe7f8; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="900" height="500" rx="10"/>
+
+  <text class="t h" x="28" y="36">Package architecture</text>
+  <text class="t s" x="28" y="56">Endpoint wrappers stay thin; everything shared lives in the core layer.</text>
+
+  <!-- Band 1: endpoints -->
+  <rect class="band" x="20" y="76" width="860" height="154" rx="10"/>
+  <text class="t band-lbl" x="36" y="98">ENDPOINT LAYER · ALWAYS RETURNS A TIBBLE</text>
+
+  <rect class="ep" x="36" y="110" width="196" height="104" rx="8"/>
+  <text class="t f" x="48" y="132">R/people.R</text>
+  <text class="t fn" x="48" y="150">alepe_representatives()</text>
+  <text class="t fn" x="48" y="164">alepe_staff()</text>
+  <text class="t fn" x="48" y="178">alepe_positions()</text>
+  <text class="t fn" x="48" y="192">alepe_departments()</text>
+  <text class="t fn" x="48" y="206">alepe_remuneration()</text>
+
+  <rect class="ep" x="248" y="110" width="180" height="104" rx="8"/>
+  <text class="t f" x="260" y="132">R/money.R</text>
+  <text class="t fn" x="260" y="152">alepe_contracts()</text>
+  <text class="t fn" x="260" y="168">alepe_procurements()</text>
+  <text class="t s" x="260" y="192">contracts, bidding</text>
+
+  <rect class="ep" x="444" y="110" width="196" height="104" rx="8"/>
+  <text class="t f" x="456" y="132">R/propositions.R</text>
+  <text class="t fn" x="456" y="152">alepe_bills()</text>
+  <text class="t fn" x="456" y="168">alepe_indications()</text>
+  <text class="t fn" x="456" y="184">alepe_requests()</text>
+  <text class="t s" x="456" y="202">XML-in-CSV parsing</text>
+
+  <rect class="ep" x="656" y="110" width="208" height="104" rx="8"/>
+  <text class="t f" x="668" y="132">R/cache.R</text>
+  <text class="t fn" x="668" y="152">alepe_cache_dir()</text>
+  <text class="t fn" x="668" y="168">alepe_cache_clear()</text>
+  <text class="t s" x="668" y="192">user-facing cache control</text>
+
+  <!-- arrows down to core -->
+  <line x1="134" y1="230" x2="134" y2="256" stroke="#64748b" stroke-width="2" marker-end="url(#aDown)"/>
+  <line x1="338" y1="230" x2="338" y2="256" stroke="#64748b" stroke-width="2" marker-end="url(#aDown)"/>
+  <line x1="542" y1="230" x2="542" y2="256" stroke="#64748b" stroke-width="2" marker-end="url(#aDown)"/>
+
+  <!-- Band 2: core -->
+  <rect class="band" x="20" y="264" width="860" height="140" rx="10"/>
+  <text class="t band-lbl" x="36" y="286">CORE LAYER · SHARED BY EVERY ENDPOINT</text>
+
+  <rect class="core" x="36" y="298" width="410" height="92" rx="8"/>
+  <text class="t f" x="48" y="320">R/req.R</text>
+  <text class="t fn" x="48" y="340">alepe_req() · alepe_perform()</text>
+  <text class="t fn" x="48" y="356">alepe_fetch_json() · alepe_fetch_csv()</text>
+  <text class="t s" x="48" y="378">cache, retry with backoff, graceful failure</text>
+
+  <rect class="core" x="462" y="298" width="402" height="92" rx="8"/>
+  <text class="t f" x="474" y="320">R/utils.R</text>
+  <text class="t fn" x="474" y="340">clean_names() · records_to_tibble()</text>
+  <text class="t fn" x="474" y="356">parse_br_number() · parse_br_date() · strip_html()</text>
+  <text class="t s" x="474" y="378">naming, typing, Brazilian formats</text>
+
+  <!-- arrows down to outside -->
+  <line x1="241" y1="390" x2="241" y2="426" stroke="#64748b" stroke-width="2" marker-end="url(#aDown)"/>
+  <line x1="663" y1="390" x2="663" y2="426" stroke="#64748b" stroke-width="2" marker-end="url(#aDown)"/>
+
+  <!-- Band 3: outside -->
+  <rect class="out" x="36" y="428" width="410" height="56" rx="8"/>
+  <text class="t w h" x="241" y="452" text-anchor="middle">ALEPE open data API</text>
+  <text class="t s od" x="241" y="471" text-anchor="middle">JSON · CSV · XML-in-CSV</text>
+
+  <rect class="disk" x="462" y="428" width="402" height="56" rx="8"/>
+  <text class="t h" x="663" y="452" text-anchor="middle">on-disk response cache</text>
+  <text class="t s" x="663" y="471" text-anchor="middle">tools::R_user_dir("alepe", "cache") · 6 h</text>
+</svg>

@@ -46,10 +46,15 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=7", "responses>=0.23", "ruff>=0.1"]
+docs = [
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.24",
+]
 
 [project.urls]
 Homepage = "https://github.com/StrategicProjects/alepe_py"
 Repository = "https://github.com/StrategicProjects/alepe_py"
+Documentation = "https://strategicprojects.github.io/alepe_py/"
 Issues = "https://github.com/StrategicProjects/alepe_py/issues"
 "R sibling" = "https://strategicprojects.github.io/alepe/"
 

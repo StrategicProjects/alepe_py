@@ -39,14 +39,15 @@ _session: requests.Session | None = None
 def configure(**options) -> dict:
     """Set connection options for the session, or read them back.
 
-    Parameters
-    ----------
-    timeout:
-        Seconds to wait for a response. Default 60.
-    max_tries:
-        How many attempts a request gets before giving up. Default 3.
-    base_url:
-        The API root, for pointing the package at a mirror or a test double.
+    Called with no arguments, returns the configuration in use. Recognised
+    options, passed as keywords:
+
+    * ``timeout`` — seconds to wait for a response. Default 60, which clears
+      the 25-30 s that ``/licitacoes`` takes.
+    * ``max_tries`` — how many attempts a request gets before giving up.
+      Default 3.
+    * ``base_url`` — the API root, for pointing the package at a mirror or a
+      test double.
 
     Returns
     -------

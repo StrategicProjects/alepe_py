@@ -11,3 +11,6 @@ build/
 # Local assistant notes, not part of the public repo
 CLAUDE.md
 .claude/
+site/
+docs/index.md
+docs/changelog.md

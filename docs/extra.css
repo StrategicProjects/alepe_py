@@ -1,0 +1,57 @@
+:root {
+  --md-primary-fg-color: #1f5aa8;
+  --md-primary-fg-color--dark: #173f75;
+  --md-accent-fg-color: #e6550d;
+}
+
+/* Tables in the same register as the R sibling's site: a full grid of
+   hairlines, a quietly tinted header, compact padding, rounded outer
+   corners. */
+.md-typeset table:not([class]) {
+  border: 1px solid #e6e9ee;
+  border-radius: 0.5rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  font-size: 0.76rem;
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  border-right: 1px solid #eef1f5;
+  border-bottom: 1px solid #eef1f5;
+  padding: 0.4rem 0.6rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: #f6f8fb;
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) th:last-child,
+.md-typeset table:not([class]) td:last-child {
+  border-right: none;
+}
+
+.md-typeset table:not([class]) tr:last-child td {
+  border-bottom: none;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  border-color: #2c3340;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: #212734;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th,
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td {
+  border-color: #2c3340;
+}
+
+/* The diagrams paint their own light background, so they need a frame that
+   does not fight the dark theme. */
+.md-typeset img[src$=".svg"] {
+  border-radius: 0.5rem;
+}

@@ -1,4 +1,9 @@
-# alepe
+# alepe <img src="docs/assets/logo.svg" align="right" height="138" alt="" />
+
+[![PyPI](https://img.shields.io/pypi/v/alepe.svg)](https://pypi.org/project/alepe/)
+[![Python](https://img.shields.io/pypi/pyversions/alepe.svg)](https://pypi.org/project/alepe/)
+[![tests](https://github.com/StrategicProjects/alepe_py/actions/workflows/tests.yml/badge.svg)](https://github.com/StrategicProjects/alepe_py/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/StrategicProjects/alepe_py/blob/main/LICENSE)
 
 Tidy access from Python to the open data API of the Legislative Assembly of the
 State of Pernambuco, Brazil ([ALEPE](https://dadosabertos.alepe.pe.gov.br)):
@@ -56,6 +61,13 @@ alepe.projetos(ano=2024)
 
 `cargos()`, `lotacoes()`, `remuneracao()`, `licitacoes()`, `indicacoes()`,
 `requerimentos()` e `limpar_cache()` completam o conjunto.
+
+## How it works
+
+Every function is a thin wrapper over the same core: a cached, retrying request
+whose response is typed into a frame by a documented schema.
+
+<img src="docs/assets/request-flow.svg" alt="A call goes through the request builder, which adds the user agent, a 60 second timeout, a six-hour cache and retries, then performs the request against the ALEPE API. A 2xx response is parsed and typed into a frame; a timeout or an error surviving the retries raises AlepeHTTPError." width="100%" />
 
 ## What the package handles for you
 
