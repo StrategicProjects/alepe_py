@@ -1,0 +1,24 @@
+on:
+  workflow_dispatch:
+
+name: probe
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe the CRAN submission host
+        run: |
+          echo "== DNS"
+          getent hosts xmpalantir.wu.ac.at || echo "   DNS FAILED"
+          echo "== TCP 443"
+          timeout 10 bash -c 'cat < /dev/null > /dev/tcp/xmpalantir.wu.ac.at/443' \
+            && echo "   TCP OK" || echo "   TCP FAILED rc=$?"
+          echo "== HTTP submission form"
+          curl -sS -o /dev/null --max-time 45 \
+            -w "   http=%{http_code} connect=%{time_connect}s total=%{time_total}s\n" \
+            "https://xmpalantir.wu.ac.at/cransubmit/index2.php" || echo "   curl rc=$?"
+          echo "== HTTP form root"
+          curl -sS -o /dev/null --max-time 45 \
+            -w "   http=%{http_code} total=%{time_total}s\n" \
+            "https://xmpalantir.wu.ac.at/cransubmit/" || echo "   curl rc=$?"
