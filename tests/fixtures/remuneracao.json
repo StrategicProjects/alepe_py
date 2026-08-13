@@ -1,0 +1,30 @@
+[
+  {
+    "cargo": "COORDENADOR CHEFE",
+    "remuneracao": "11685.70",
+    "tipoCargo": "Cargo Comissionado Administrativo",
+    "mesCompetencia": 8,
+    "anoCompetencia": 2026
+  },
+  {
+    "cargo": "Superintendente",
+    "remuneracao": "11685.70",
+    "tipoCargo": "Cargo Comissionado Administrativo",
+    "mesCompetencia": 8,
+    "anoCompetencia": 2026
+  },
+  {
+    "cargo": "Superintendente Parlamentar",
+    "remuneracao": "11685.70",
+    "tipoCargo": "Cargo Comissionado Administrativo",
+    "mesCompetencia": 8,
+    "anoCompetencia": 2026
+  },
+  {
+    "cargo": "Chefe de Gabinete da Primeira Secretaria",
+    "remuneracao": "11685.70",
+    "tipoCargo": "Cargo Comissionado Administrativo",
+    "mesCompetencia": 8,
+    "anoCompetencia": 2026
+  }
+]

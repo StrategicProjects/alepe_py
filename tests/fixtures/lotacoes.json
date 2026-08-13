@@ -1,0 +1,22 @@
+[
+  {
+    "total": 1,
+    "nome_lotacao": null,
+    "vinculo": "Comissionado"
+  },
+  {
+    "total": 1,
+    "nome_lotacao": null,
+    "vinculo": "Estagiário"
+  },
+  {
+    "total": 3,
+    "nome_lotacao": "1ª Secretaria",
+    "vinculo": "Efetivo"
+  },
+  {
+    "total": 54,
+    "nome_lotacao": "1ª Secretaria",
+    "vinculo": "Comissionado"
+  }
+]

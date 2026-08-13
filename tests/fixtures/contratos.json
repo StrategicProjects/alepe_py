@@ -1,0 +1,86 @@
+[
+  {
+    "modalidade": "Pregão Eletrônico",
+    "contratada": "ELEVADORES SUPER LTDA",
+    "cpfCnpj": "2474174000111.00",
+    "objeto": "5.000 OUTROS",
+    "valor": "119267.04",
+    "numeroLicitacao": "15.00",
+    "ano": "2026.00",
+    "vigenciaInicio": {
+      "date": "2026-06-11 00:00:00.000000",
+      "timezone_type": "3.00",
+      "timezone": "America/Recife"
+    },
+    "vigenciaFim": {
+      "date": "2027-06-10 00:00:00.000000",
+      "timezone_type": "3.00",
+      "timezone": "America/Recife"
+    },
+    "numeroContrato": "2474174000111.00",
+    "anoLicitacao": "2026.00"
+  },
+  {
+    "modalidade": "Pregão Eletrônico",
+    "contratada": "JOEL GOMES DA CRUZ",
+    "cpfCnpj": "64348860000101.00",
+    "objeto": "5.000 OUTROS",
+    "valor": "57780.00",
+    "numeroLicitacao": "11.00",
+    "ano": "2026.00",
+    "vigenciaInicio": {
+      "date": "2026-05-22 00:00:00.000000",
+      "timezone_type": "3.00",
+      "timezone": "America/Recife"
+    },
+    "vigenciaFim": {
+      "date": "2027-05-21 00:00:00.000000",
+      "timezone_type": "3.00",
+      "timezone": "America/Recife"
+    },
+    "numeroContrato": "64348860000101.00",
+    "anoLicitacao": "2026.00"
+  },
+  {
+    "modalidade": "Dispensa",
+    "contratada": "NECTAR - NUCLEO DE EMPREENDIMENTOS EM CIENCIA,TECNOLOGIA E ARTES",
+    "cpfCnpj": "4521441000190.00",
+    "objeto": "5.000 OUTROS",
+    "valor": "2497530.00",
+    "numeroLicitacao": "10.00",
+    "ano": "2026.00",
+    "vigenciaInicio": {
+      "date": "2026-05-08 00:00:00.000000",
+      "timezone_type": "3.00",
+      "timezone": "America/Recife"
+    },
+    "vigenciaFim": {
+      "date": "2027-05-07 00:00:00.000000",
+      "timezone_type": "3.00",
+      "timezone": "America/Recife"
+    },
+    "numeroContrato": "4521441000190.00",
+    "anoLicitacao": "2026.00"
+  },
+  {
+    "modalidade": "Dispensa",
+    "contratada": "SERVICO NACIONAL DE APRENDIZAGEM COMERCIAL SENAC",
+    "cpfCnpj": "3485324000155.00",
+    "objeto": "5.000 OUTROS",
+    "valor": "953100.00",
+    "numeroLicitacao": "9.00",
+    "ano": "2026.00",
+    "vigenciaInicio": {
+      "date": "2026-04-23 00:00:00.000000",
+      "timezone_type": "3.00",
+      "timezone": "America/Recife"
+    },
+    "vigenciaFim": {
+      "date": "2027-04-22 00:00:00.000000",
+      "timezone_type": "3.00",
+      "timezone": "America/Recife"
+    },
+    "numeroContrato": "3485324000155.00",
+    "anoLicitacao": "2026.00"
+  }
+]
