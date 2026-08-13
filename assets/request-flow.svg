@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420" role="img" aria-labelledby="flowTitle flowDesc">
+  <title id="flowTitle">How an alepe call works</title>
+  <desc id="flowDesc">A call to an alepe function builds a cached, retrying request; on success the JSON or CSV payload is typed into a tibble, and on failure a classed warning is emitted and the same call returns a zero-row tibble with the documented columns.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowOk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f855a"/>
+    </marker>
+    <marker id="arrowWarn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c05621"/>
+    </marker>
+    <style>
+      .bg    { fill: #ffffff; }
+      .box   { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1.5; }
+      .core  { fill: #e5edf9; stroke: #1f5aa8; stroke-width: 1.5; }
+      .ok    { fill: #e8f5ee; stroke: #2f855a; stroke-width: 1.5; }
+      .warn  { fill: #fdf0e4; stroke: #c05621; stroke-width: 1.5; }
+      .api   { fill: #1f5aa8; stroke: #173f75; stroke-width: 1.5; }
+      .t     { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; fill: #0f172a; }
+      .h     { font-size: 15px; font-weight: 600; }
+      .s     { font-size: 11.5px; fill: #475569; }
+      .mono  { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12.5px; }
+      .white { fill: #ffffff; }
+      .lbl   { font-size: 11.5px; font-weight: 600; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="900" height="420" rx="10"/>
+
+  <text class="t h" x="28" y="36">How a call to alepe works</text>
+  <text class="t s" x="28" y="56">Every exported function follows the same path; only the endpoint and its schema change.</text>
+
+  <!-- top row -->
+  <rect class="box" x="28" y="80" width="176" height="72" rx="8"/>
+  <text class="t mono" x="116" y="108" text-anchor="middle">alepe_contracts()</text>
+  <text class="t s" x="116" y="128" text-anchor="middle">one function</text>
+  <text class="t s" x="116" y="143" text-anchor="middle">per endpoint</text>
+
+  <rect class="core" x="244" y="80" width="196" height="72" rx="8"/>
+  <text class="t mono" x="342" y="104" text-anchor="middle">alepe_req()</text>
+  <text class="t s" x="342" y="124" text-anchor="middle">user agent · 60 s timeout</text>
+  <text class="t s" x="342" y="140" text-anchor="middle">cache 6 h · retry 429/5xx ×3</text>
+
+  <rect class="core" x="480" y="80" width="176" height="72" rx="8"/>
+  <text class="t mono" x="568" y="104" text-anchor="middle">alepe_perform()</text>
+  <text class="t s" x="568" y="124" text-anchor="middle">backoff 2^i between</text>
+  <text class="t s" x="568" y="140" text-anchor="middle">attempts</text>
+
+  <rect class="api" x="696" y="80" width="176" height="72" rx="8"/>
+  <text class="t white h" x="784" y="108" text-anchor="middle">ALEPE API</text>
+  <text class="t white s" x="784" y="130" text-anchor="middle" fill="#dbe7f8">dadosabertos</text>
+  <text class="t white s" x="784" y="146" text-anchor="middle" fill="#dbe7f8">.alepe.pe.gov.br</text>
+
+  <line x1="204" y1="116" x2="238" y2="116" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="440" y1="116" x2="474" y2="116" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="656" y1="116" x2="690" y2="116" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- response splits into two paths -->
+  <path d="M 784 152 L 784 184" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M 784 184 L 220 184" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M 220 184 L 220 216" stroke="#2f855a" stroke-width="2" fill="none" marker-end="url(#arrowOk)"/>
+  <path d="M 784 184 L 784 306" stroke="#c05621" stroke-width="2" fill="none" marker-end="url(#arrowWarn)"/>
+
+  <text class="t lbl" x="232" y="206" fill="#2f855a">2xx</text>
+  <!-- kept beside the arrow it labels, split so it clears the frame -->
+  <text class="t lbl" x="796" y="238" fill="#c05621">timeout,</text>
+  <text class="t lbl" x="796" y="253" fill="#c05621">4xx/5xx</text>
+  <text class="t s" x="796" y="268">after retries</text>
+
+  <!-- success path -->
+  <rect class="ok" x="120" y="218" width="200" height="64" rx="8"/>
+  <text class="t mono" x="220" y="244" text-anchor="middle">alepe_fetch_json()</text>
+  <text class="t s" x="220" y="264" text-anchor="middle">or _csv() for propositions</text>
+
+  <rect class="ok" x="360" y="218" width="212" height="64" rx="8"/>
+  <text class="t mono" x="466" y="244" text-anchor="middle">records_to_tibble()</text>
+  <text class="t s" x="466" y="264" text-anchor="middle">schema types each column</text>
+
+  <line x1="320" y1="250" x2="354" y2="250" stroke="#2f855a" stroke-width="2" marker-end="url(#arrowOk)"/>
+  <path d="M 466 282 L 466 306" stroke="#2f855a" stroke-width="2" fill="none" marker-end="url(#arrowOk)"/>
+
+  <!-- outcomes -->
+  <rect class="ok" x="360" y="310" width="212" height="64" rx="8"/>
+  <text class="t h" x="466" y="336" text-anchor="middle" fill="#22543d">tibble with data</text>
+  <text class="t s" x="466" y="356" text-anchor="middle">snake_case, parsed types</text>
+
+  <rect class="warn" x="612" y="310" width="260" height="64" rx="8"/>
+  <text class="t h" x="742" y="334" text-anchor="middle" fill="#7b341e">zero-row tibble</text>
+  <text class="t s" x="742" y="354" text-anchor="middle">same columns · classed warning</text>
+
+  <text class="t s" x="28" y="400">Network trouble never raises an error, so a pipeline built on alepe keeps running.</text>
+</svg>
