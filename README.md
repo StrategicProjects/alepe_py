@@ -4,6 +4,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/alepe.svg)](https://pypi.org/project/alepe/)
 [![tests](https://github.com/StrategicProjects/alepe_py/actions/workflows/tests.yml/badge.svg)](https://github.com/StrategicProjects/alepe_py/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/StrategicProjects/alepe_py/blob/main/LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21925920.svg)](https://doi.org/10.5281/zenodo.21925920)
 
 Tidy access from Python to the open data API of the Legislative Assembly of the
 State of Pernambuco, Brazil ([ALEPE](https://dadosabertos.alepe.pe.gov.br)):
@@ -131,6 +132,12 @@ and its Python twin
 [datasusr](https://CRAN.R-project.org/package=datasusr),
 [ibger](https://CRAN.R-project.org/package=ibger) and
 [pixr](https://CRAN.R-project.org/package=pixr).
+
+## Citation
+
+Archived on Zenodo. The DOI above is the *concept* DOI: it always resolves to
+the latest version. To cite the exact version you used, take its own DOI from
+the Zenodo record, or read `CITATION.cff`.
 
 ## License
 

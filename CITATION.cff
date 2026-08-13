@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "alepe: Access the open data API of the Legislative Assembly of Pernambuco from Python"
+abstract: >-
+  A Python client for the open data API of ALEPE, the Legislative Assembly of
+  the State of Pernambuco, Brazil. Covers representatives, staff, positions,
+  departments, remuneration, contracts, procurement processes and legislative
+  propositions, returning typed pandas DataFrames with column names normalised
+  from the API's own Portuguese fields. Includes a response cache, retries with
+  exponential backoff, and Portuguese aliases for every function.
+type: software
+version: 0.1.0
+license: MIT
+doi: "10.5281/zenodo.21925920"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21925920"
+    description: The concept DOI, which always resolves to the latest version.
+  - type: doi
+    value: "10.5281/zenodo.21925921"
+    description: The DOI of version 0.1.0.
+repository-code: "https://github.com/StrategicProjects/alepe_py"
+url: "https://strategicprojects.github.io/alepe_py/"
+keywords:
+  - ALEPE
+  - Pernambuco
+  - Brazil
+  - legislative data
+  - open data
+  - open government
+  - Python
+authors:
+  - family-names: Leite
+    given-names: André
+    email: leite@castlab.org
+    orcid: "https://orcid.org/0000-0002-4718-9766"
+  - family-names: Wasiliew
+    given-names: Marcos
+  - family-names: Vasconcelos
+    given-names: Hugo
+    orcid: "https://orcid.org/0000-0001-6249-0920"
+  - family-names: Amorim
+    given-names: Carlos
+    orcid: "https://orcid.org/0000-0001-6315-8305"
+  - family-names: Bezerra
+    given-names: Diogo
+    orcid: "https://orcid.org/0000-0002-1216-8674"
+  - family-names: Nascimento Barreto
+    given-names: Júlia
