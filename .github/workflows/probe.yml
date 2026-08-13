@@ -7,18 +7,13 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe the CRAN submission host
+      - name: What the submission form serves now
         run: |
-          echo "== DNS"
-          getent hosts xmpalantir.wu.ac.at || echo "   DNS FAILED"
-          echo "== TCP 443"
-          timeout 10 bash -c 'cat < /dev/null > /dev/tcp/xmpalantir.wu.ac.at/443' \
-            && echo "   TCP OK" || echo "   TCP FAILED rc=$?"
-          echo "== HTTP submission form"
-          curl -sS -o /dev/null --max-time 45 \
-            -w "   http=%{http_code} connect=%{time_connect}s total=%{time_total}s\n" \
-            "https://xmpalantir.wu.ac.at/cransubmit/index2.php" || echo "   curl rc=$?"
-          echo "== HTTP form root"
-          curl -sS -o /dev/null --max-time 45 \
-            -w "   http=%{http_code} total=%{time_total}s\n" \
-            "https://xmpalantir.wu.ac.at/cransubmit/" || echo "   curl rc=$?"
+          curl -sS --max-time 45 -o form.html "https://xmpalantir.wu.ac.at/cransubmit/"
+          echo "== bytes: $(wc -c < form.html)"
+          echo "== form actions"
+          grep -oE '<form[^>]*>' form.html | head -5
+          echo "== title / headings"
+          grep -oE '<title>[^<]*</title>|<h[12][^>]*>[^<]*</h[12]>' form.html | head -5
+          echo "== any notice"
+          grep -oiE '[^<>]*(maintenance|unavailable|moved|closed|suspend)[^<>]*' form.html | head -5
