@@ -725,8 +725,10 @@ mesma consulta:</p>
 <div class="highlight"><pre><span></span><code><span class="n">alepe</span><span class="o">.</span><span class="n">servidores</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">"efetivo"</span><span class="p">)</span>
 <span class="n">alepe</span><span class="o">.</span><span class="n">staff</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">"permanent"</span><span class="p">)</span>
 </code></pre></div>
-<p>Os valores originais da API são <code>efetivo</code>, <code>comissionado</code> e <code>a-disposicao</code>; os
-equivalentes em inglês são <code>permanent</code>, <code>commissioned</code> e <code>seconded</code>.</p>
+<p>Os valores originais da API são <code>efetivo</code>, <code>comissionado</code>, <code>a-disposicao</code> e
+<code>efetivo-cedido</code>; os equivalentes em inglês são <code>permanent</code>, <code>commissioned</code>,
+<code>seconded</code> e <code>lent</code>. <code>efetivo-cedido</code> (efetivos da Alepe cedidos a outros
+órgãos) só existe em <code>servidores()</code>: a API o ignora em <code>/cargos</code>.</p>
 <h2 id="nomes-de-coluna">Nomes de coluna<a class="headerlink" href="#nomes-de-coluna" title="Permanent link">&para;</a></h2>
 <p>Os nomes de coluna <strong>não</strong> são traduzidos. Eles mantêm o campo oficial da API,
 normalizado para snake_case — <code>nome_lotacao</code>, <code>vigencia_inicio</code>,

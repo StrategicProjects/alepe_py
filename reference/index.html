@@ -1177,6 +1177,12 @@ to bypass the response cache for that call.</p>
     <div class="doc doc-contents first">
 
         <p>The Assembly's staff roster, optionally filtered by employment status.</p>
+<p><code>status</code> is <code>"permanent"</code>, <code>"commissioned"</code>, <code>"seconded"</code> (staff from
+other bodies placed at the Assembly's disposal) or <code>"lent"</code> (the Assembly's
+own permanent staff lent to other bodies, a subset of <code>"permanent"</code>); the
+API terms <code>"efetivo"</code>, <code>"comissionado"</code>, <code>"a-disposicao"</code> and
+<code>"efetivo-cedido"</code> work too. Lent staff are published with <code>vinculo</code>
+<code>"Efetivo"</code>, so this filter is the only way to tell them apart.</p>
 
 
     </div>
@@ -1195,6 +1201,8 @@ to bypass the response cache for that call.</p>
     <div class="doc doc-contents first">
 
         <p>Staff counts per position and level.</p>
+<p><code>status</code> takes the same values as :func:<code>staff</code> except <code>"lent"</code>, which
+the API ignores for this endpoint.</p>
 
 
     </div>
