@@ -17,6 +17,12 @@ identifiers:
     value: "10.5281/zenodo.21925920"
     description: The concept DOI, which always resolves to the latest version.
   - type: doi
+    value: "10.5281/zenodo.23048328"
+    description: The DOI of version 0.1.2.
+  - type: doi
+    value: "10.5281/zenodo.23047675"
+    description: The DOI of version 0.1.1.
+  - type: doi
     value: "10.5281/zenodo.21925921"
     description: The DOI of version 0.1.0.
 repository-code: "https://github.com/StrategicProjects/alepe_py"
