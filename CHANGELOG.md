@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+* `staff()` gains `status="lent"` (API term `"efetivo-cedido"`): the Assembly's
+  own permanent staff lent to other bodies. The API publishes them with
+  `vinculo` `"Efetivo"`, so this server-side filter is the only way to single
+  them out. `positions()` refuses it, because `/cargos` ignores the value and
+  returns every status.
+
 ## 0.1.1
 
 * `set_cache_ttl(0)` now always re-fetches. Stale entries were detected by

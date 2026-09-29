@@ -53,8 +53,10 @@ alepe.servidores(status="efetivo")
 alepe.staff(status="permanent")
 ```
 
-Os valores originais da API são `efetivo`, `comissionado` e `a-disposicao`; os
-equivalentes em inglês são `permanent`, `commissioned` e `seconded`.
+Os valores originais da API são `efetivo`, `comissionado`, `a-disposicao` e
+`efetivo-cedido`; os equivalentes em inglês são `permanent`, `commissioned`,
+`seconded` e `lent`. `efetivo-cedido` (efetivos da Alepe cedidos a outros
+órgãos) só existe em `servidores()`: a API o ignora em `/cargos`.
 
 ## Nomes de coluna
 

@@ -147,6 +147,24 @@ def test_status_filter_accepts_both_vocabularies(serve_json):
         alepe.staff(status="nope")
 
 
+def test_lent_status_reaches_staff_but_not_positions(monkeypatch, fixture_json):
+    sent = {}
+
+    def fake_fetch(endpoint, params=None, **kwargs):
+        sent[endpoint] = (params or {}).get("vinculo")
+        return fixture_json("servidores.json")
+
+    monkeypatch.setattr(_client, "fetch_json", fake_fetch)
+    alepe.staff(status="lent")
+    assert sent["servidores"] == "efetivo-cedido"
+    alepe.servidores(status="efetivo-cedido")
+    assert sent["servidores"] == "efetivo-cedido"
+
+    with pytest.raises(ValueError):
+        alepe.positions(status="lent")
+    assert "cargos" not in sent
+
+
 def test_portuguese_aliases_reach_the_same_functions(serve_json, serve_text):
     serve_json("servidores.json")
     assert alepe.servidores().equals(alepe.staff())
