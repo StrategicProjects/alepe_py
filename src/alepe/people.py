@@ -40,20 +40,26 @@ _STATUS = {
     "a-disposicao": "a-disposicao",
 }
 
+# Only /servidores honours efetivo-cedido; /cargos ignores it and returns every
+# status, as it does for any unknown value, so positions() must refuse it.
+_STAFF_STATUS = {**_STATUS, "lent": "efetivo-cedido", "efetivo-cedido": "efetivo-cedido"}
 
-def map_status(status: str | None) -> str | None:
+
+def map_status(status: str | None, lent: bool = False) -> str | None:
     """Translate an employment-status filter to the API's ``vinculo`` value.
 
     Accepts the English vocabulary and the original API terms alike, so
-    ``"permanent"`` and ``"efetivo"`` are the same query.
+    ``"permanent"`` and ``"efetivo"`` are the same query. ``lent`` also allows
+    ``"lent"`` / ``"efetivo-cedido"``, which only the staff endpoint supports.
     """
     if status is None:
         return None
+    table = _STAFF_STATUS if lent else _STATUS
     try:
-        return _STATUS[status]
+        return table[status]
     except KeyError:
         raise ValueError(
-            f"Unknown status {status!r}. Use one of: {', '.join(sorted(_STATUS))}."
+            f"Unknown status {status!r}. Use one of: {', '.join(sorted(table))}."
         ) from None
 
 
@@ -64,13 +70,27 @@ def representatives(refresh: bool = False) -> pd.DataFrame:
 
 
 def staff(status: str | None = None, refresh: bool = False) -> pd.DataFrame:
-    """The Assembly's staff roster, optionally filtered by employment status."""
-    records = _client.fetch_json("servidores", {"vinculo": map_status(status)}, refresh=refresh)
+    """The Assembly's staff roster, optionally filtered by employment status.
+
+    ``status`` is ``"permanent"``, ``"commissioned"``, ``"seconded"`` (staff from
+    other bodies placed at the Assembly's disposal) or ``"lent"`` (the Assembly's
+    own permanent staff lent to other bodies, a subset of ``"permanent"``); the
+    API terms ``"efetivo"``, ``"comissionado"``, ``"a-disposicao"`` and
+    ``"efetivo-cedido"`` work too. Lent staff are published with ``vinculo``
+    ``"Efetivo"``, so this filter is the only way to tell them apart.
+    """
+    records = _client.fetch_json(
+        "servidores", {"vinculo": map_status(status, lent=True)}, refresh=refresh
+    )
     return to_frame(records, STAFF_SCHEMA)
 
 
 def positions(status: str | None = None, refresh: bool = False) -> pd.DataFrame:
-    """Staff counts per position and level."""
+    """Staff counts per position and level.
+
+    ``status`` takes the same values as :func:`staff` except ``"lent"``, which
+    the API ignores for this endpoint.
+    """
     records = _client.fetch_json("cargos", {"vinculo": map_status(status)}, refresh=refresh)
     return to_frame(records, POSITIONS_SCHEMA)
 
