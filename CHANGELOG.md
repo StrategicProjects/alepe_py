@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.2
 
 * `staff()` gains `status="lent"` (API term `"efetivo-cedido"`): the Assembly's
   own permanent staff lent to other bodies. The API publishes them with

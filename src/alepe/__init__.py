@@ -27,7 +27,7 @@ and return an empty result, this package raises
 
 from __future__ import annotations
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 from ._cache import cache_clear, cache_dir
 from ._cache import enabled as cache_enabled
