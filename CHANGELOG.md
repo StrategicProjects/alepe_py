@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1
+
+* `set_cache_ttl(0)` now always re-fetches. Stale entries were detected by
+  comparing file ages, and on Windows the clock and NTFS timestamps are coarse
+  enough that a response written a moment earlier had an age of zero, so it was
+  still served.
+* Corrected Marcos Wasiliew's e-mail address in the package metadata.
+
 ## 0.1.0
 
 Initial release.
