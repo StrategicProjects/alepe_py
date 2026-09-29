@@ -91,7 +91,10 @@ def _key(url: str) -> pathlib.Path:
 
 def read(url: str) -> bytes | None:
     """The cached body for ``url``, or ``None`` if absent, stale or disabled."""
-    if not enabled():
+    if not enabled() or ttl() <= 0:
+        # A zero ttl means "never fresh". Comparing ages cannot express that:
+        # on Windows the clock and NTFS mtimes are coarse enough that a file
+        # written a moment ago has an age of 0, or even slightly negative.
         return None
     path = _key(url)
     try:
