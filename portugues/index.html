@@ -716,14 +716,14 @@ Python, mas incômodos de digitar e frágeis entre codificações.</p>
 <span class="n">alepe</span><span class="o">.</span><span class="n">requerimentos</span><span class="p">(</span><span class="n">ano</span><span class="o">=</span><span class="mi">2024</span><span class="p">,</span> <span class="n">legislatura</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </code></pre></div>
 <p>Os demais aliases são a mesma função, com os mesmos argumentos:</p>
-<div class="highlight"><pre><span></span><code><span class="n">alepe</span><span class="o">.</span><span class="n">servidores</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;efetivo&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">alepe</span><span class="o">.</span><span class="n">servidores</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">"efetivo"</span><span class="p">)</span>
 <span class="n">alepe</span><span class="o">.</span><span class="n">contratos</span><span class="p">(</span><span class="n">refresh</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="valores-de-filtro">Valores de filtro<a class="headerlink" href="#valores-de-filtro" title="Permanent link">&para;</a></h2>
 <p>O filtro <code>status</code> aceita os dois vocabulários, então estas duas chamadas são a
 mesma consulta:</p>
-<div class="highlight"><pre><span></span><code><span class="n">alepe</span><span class="o">.</span><span class="n">servidores</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;efetivo&quot;</span><span class="p">)</span>
-<span class="n">alepe</span><span class="o">.</span><span class="n">staff</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;permanent&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">alepe</span><span class="o">.</span><span class="n">servidores</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">"efetivo"</span><span class="p">)</span>
+<span class="n">alepe</span><span class="o">.</span><span class="n">staff</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">"permanent"</span><span class="p">)</span>
 </code></pre></div>
 <p>Os valores originais da API são <code>efetivo</code>, <code>comissionado</code> e <code>a-disposicao</code>; os
 equivalentes em inglês são <code>permanent</code>, <code>commissioned</code> e <code>seconded</code>.</p>

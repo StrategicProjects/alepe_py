@@ -763,7 +763,7 @@ endpoints and produce the same column names.</p>
 <span class="n">alepe</span><span class="o">.</span><span class="n">representatives</span><span class="p">()</span>
 
 <span class="c1"># Permanent staff, largest departments</span>
-<span class="n">alepe</span><span class="o">.</span><span class="n">staff</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;permanent&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="s2">&quot;nome_lotacao&quot;</span><span class="p">)</span>
+<span class="n">alepe</span><span class="o">.</span><span class="n">staff</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">"permanent"</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="s2">"nome_lotacao"</span><span class="p">)</span>
 
 <span class="c1"># Contracts active today</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
@@ -782,7 +782,7 @@ query.</p>
 <p>Cada função tem um alias com o nome do próprio endpoint da API, para quem
 prefere manter o pipeline inteiro em português:</p>
 <div class="highlight"><pre><span></span><code><span class="n">alepe</span><span class="o">.</span><span class="n">parlamentares</span><span class="p">()</span>
-<span class="n">alepe</span><span class="o">.</span><span class="n">servidores</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;efetivo&quot;</span><span class="p">)</span>
+<span class="n">alepe</span><span class="o">.</span><span class="n">servidores</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">"efetivo"</span><span class="p">)</span>
 <span class="n">alepe</span><span class="o">.</span><span class="n">contratos</span><span class="p">()</span>
 <span class="n">alepe</span><span class="o">.</span><span class="n">projetos</span><span class="p">(</span><span class="n">ano</span><span class="o">=</span><span class="mi">2024</span><span class="p">)</span>
 </code></pre></div>
@@ -826,8 +826,8 @@ surprising in Python.</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">alepe</span><span class="o">.</span><span class="n">procurements</span><span class="p">()</span>
 <span class="k">except</span> <span class="n">alepe</span><span class="o">.</span><span class="n">AlepeHTTPError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ALEPE is not answering (</span><span class="si">{</span><span class="n">err</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s2">); carrying on without it&quot;</span><span class="p">)</span>
-    <span class="n">frame</span> <span class="o">=</span> <span class="n">alepe</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="s2">&quot;procurements&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ALEPE is not answering (</span><span class="si">{</span><span class="n">err</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s2">); carrying on without it"</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">alepe</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="s2">"procurements"</span><span class="p">)</span>
 </code></pre></div>
 <p><code>alepe.empty(name)</code> returns a correctly typed empty frame for any endpoint,
 which is what you want when a pipeline downstream expects the columns to exist
